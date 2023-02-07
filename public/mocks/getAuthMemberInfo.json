@@ -1,0 +1,14 @@
+{
+  "data":{
+    "memberSid":"590fdd45d7764a55b7ad0020ccca3e91",
+    "memberName":"个人实名认证会员姓名",
+    "memberCardNo":"341125199111287456",
+    "memberPhone":"15852584256",
+    "province":"安徽省",
+    "city":"合肥市",
+    "memberCardPic1":"xxx.jpg",
+    "memberCardPic2":"xxx.jpg"
+  },
+  "success":true,
+  "msg":"查询成功"
+}

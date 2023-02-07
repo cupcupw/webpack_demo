@@ -1,0 +1,14 @@
+{
+  "data":[
+    {
+      "value":"xxx/wts.jpg",
+      "name":"委托书"
+    },
+    {
+      "value":"xxx/pmxzjtbgd.jpg",
+      "name":"拍卖须知及特别规定"
+    }
+  ],
+  "success":true,
+  "msg":"查询成功"
+}

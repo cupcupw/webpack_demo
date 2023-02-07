@@ -1,0 +1,112 @@
+<template>
+  <as-view class="agreement">
+    <article class="agree-main" v-html="content" @click="handleChildAgreement" />
+    <agreement-popup ref="refAgreementPopup" />
+  </as-view>
+</template>
+
+<script>
+import steps from "../components/steps";
+import agreementPopup from "@/components/agreement-popup"
+import {mapState} from "vuex";
+export default {
+  name: "agreement",
+  data() {
+    return {
+      content:''
+    }
+  },
+  computed:{
+    ...mapState([
+      'memberSid',
+      'cellphone'
+    ]),
+  },
+  created() {
+    console.log('this.$route.query',this.$route.query)
+    this.getAgreement()
+  },
+  methods: {
+    async getAgreement(){
+      const res1 = await this.$api.getConfirmAgree({
+        nameValue: this.$route.query.nameValue,
+        memberSid: this.memberSid
+      })
+      this.content = res1.agreementContent
+    },
+    // 查看子协议
+    handleChildAgreement(e){
+      e.preventDefault()
+      const { target } = e
+      const id = target.getAttribute('href')
+      if(target.nodeName.toLocaleLowerCase() === 'a' && id){
+        this.$refs.refAgreementPopup.show(id)
+      }
+    },
+  },
+  components:{
+    steps,
+    agreementPopup
+  }
+}
+</script>
+
+<style scoped lang="scss">
+@import "src/assets/scss/define";
+.agreement{
+  @extend %df;
+  @extend %fdc;
+  @extend %aic;
+  @extend %h100;
+  @extend %w100;
+  @extend %bsb;
+  padding: j(0) j(16);
+  &::v-deep{
+    .steps-label{
+      font-size: j(9);
+      //text-align: center;
+    }
+    .steps-item{
+      margin-right: j(6);
+    }
+    .steps-item:last-child{
+      margin-right: 0;
+    }
+  }
+  & img{
+    width: j(64);
+    height: j(64);
+  }
+  & h1{
+    margin-top: j(20);
+    font-size: j(20);
+  }
+  & button{
+    //@extend %pf;
+    @extend %b0;
+    @extend %bn;
+    //@extend %ao8;
+    //bottom: j(106);
+    margin-top: j(15);
+    height: j(44);
+    color: $white;
+    width: j(344);
+    font-size: j(14);
+    border-radius: j(4);
+    background-color: $green;
+  }
+}
+.agree-steps{
+  //@extend %pf;
+  @extend %l0;
+  @extend %r0;
+  top: j(46);
+}
+.agree-main{
+  flex: 1;
+  box-sizing: border-box;
+  padding: j(20) 0 j(30);
+  overflow: auto;
+  //margin-top: j(96);
+}
+</style>

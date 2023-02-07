@@ -1,0 +1,18 @@
+
+@import "~as-cocoon/ui/assets/scss/css-variables";
+
+
+@include root() {
+  input:disabled,
+  input[disabled],
+  input.disabled {
+    opacity: 1;
+    -webkit-text-fill-color: #333333;
+    -webkit-opacity: 1;
+  }
+    --as-primary-color: #52bda9;
+
+    // as-view
+    //--as-view-nav-bar-background-color: #000;
+    //--as-view-nav-bar-text-color: #fff;
+}
